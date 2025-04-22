@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=MSI;Initial Catalog=WamsDB;User ID=hhallva;Password=123890;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -ContextDir DataContexts -Context AppDbContext -force

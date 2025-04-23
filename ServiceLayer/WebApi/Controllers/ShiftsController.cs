@@ -14,9 +14,11 @@ namespace WebApi.Controllers
     public class ShiftsController(AppDbContext context) : ControllerBase
     {
         [HttpGet]
+        #region Докуметация
         [SwaggerOperation(Summary = "Получение списка всех смен.", Description = "Метод для получения списка смен из БД.")]
         [SwaggerResponse(StatusCodes.Status200OK, "Успешное получение списка. Возврат списка смен.", Type = typeof(IEnumerable<ShiftDto>))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Смены не найдены. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
+        #endregion
         public async Task<ActionResult<IEnumerable<ShiftDto>>> GetShiftsAsync()
         {
             var shifts = await context.Shifts.ToListAsync();
@@ -30,9 +32,11 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("Open")]
+        #region Документация
         [SwaggerOperation(Summary = "Получение списка всех доступных смен.", Description = "Метод для получения списка всех доступных смен из БД.")]
         [SwaggerResponse(StatusCodes.Status200OK, "Успешное получение списка. Возврат списка доступных смен.", Type = typeof(IEnumerable<ShiftDto>))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Доступные смены не найдены. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
+        #endregion
         public async Task<ActionResult<IEnumerable<ShiftDto>>> GetOpenShiftsAsync()
         {
             var shifts = await context.Shifts
@@ -48,10 +52,12 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}", Name = "GetShiftById")]
+        #region Документация
         [SwaggerOperation(Summary = "Получение смены.", Description = "Метод для получения смены по Id из БД.")]
         [SwaggerResponse(StatusCodes.Status200OK, "Успешное получение смены. Возврат объекта смены.", Type = typeof(ShiftDto))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Неверные параметры. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Смена не найдена. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
+        #endregion
         public async Task<ActionResult<ShiftDto>> GetShiftByIdAsync([SwaggerParameter("Id смены которую необходимо получить", Required = true)] int id)
         {
             if (id <= 0)
@@ -68,9 +74,11 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        #region Документация
         [SwaggerOperation(Summary = "Создание смены.", Description = "Метод для создания новой смены в БД.")]
         [SwaggerResponse(StatusCodes.Status201Created, "Успешное создание смены. Возврат созданной смены.", Type = typeof(ShiftDto))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Неверные параметры. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
+        #endregion
         public async Task<ActionResult<ShiftDto>> PostShiftAsync([SwaggerRequestBody("Данные смены", Required = true)] ShiftPostDto shiftDto)
         {
             try
@@ -96,9 +104,11 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("{id}")]
+        #region Документация
         [SwaggerOperation(Summary = "Обновление смены.", Description = "Метод для обновления смены в БД.")]
         [SwaggerResponse(StatusCodes.Status200OK, "Успешное обновление смены. Возврат обновленной смены.", Type = typeof(ShiftDto))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Неверные параметры. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
+        #endregion
         public async Task<IActionResult> PutShiftAsync([SwaggerParameter("Id смены которую необходимо обновить", Required = true)] int id,
                                                                    [SwaggerRequestBody("Обновленные данные смены", Required = true)] ShiftPutDto shiftDto)
         {
@@ -124,10 +134,12 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        #region Документация
         [SwaggerOperation(Summary = "Удаление смены.", Description = "Метод для удаления смены из БД.")]
         [SwaggerResponse(StatusCodes.Status204NoContent, "Успешное удаление смены.")]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Смена не найдена. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Неверные параметры. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
+        #endregion
         public async Task<IActionResult> DeleteShiftAsync([SwaggerParameter("Id смены которую необходимо удалить", Required = true)] int id)
         {
             if (id <= 0)

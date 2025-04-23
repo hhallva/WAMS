@@ -18,7 +18,7 @@ namespace WebApi.Controllers
         [SwaggerResponse(StatusCodes.Status200OK, "Успешное получение зарплаты. Возврат объекта зарплаты.", Type = typeof(SalaryDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Зарплата не найдена. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
         #endregion
-        public async Task<ActionResult<SalaryDto>> GetCurrentSalaryAsync(int userId)
+        public async Task<ActionResult<SalaryDto>> GetCurrentSalaryAsync([SwaggerParameter("Id пользователя у которого хотим получить зарплату", Required = true)] int userId)
         {
             return Ok();
         }
@@ -29,7 +29,7 @@ namespace WebApi.Controllers
         [SwaggerResponse(StatusCodes.Status200OK, "Успешное получение зарплаты. Возврат объекта зарплаты.", Type = typeof(SalaryDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Зарплата не найдена. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
         #endregion
-        public async Task<ActionResult<SalaryDto>> GetSalaryByMonthAsync()
+        public async Task<ActionResult<SalaryDto>> GetSalaryByMonthAsync([SwaggerParameter("Id пользователя у которого хотим получить зарплату", Required = true)] int userId)
         {
             return Ok();
         }
@@ -40,7 +40,7 @@ namespace WebApi.Controllers
         [SwaggerResponse(StatusCodes.Status200OK, "Успешное получение зарплаты. Возврат объекта зарплаты.", Type = typeof(SalaryDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Зарплата не найдена. Возврат сообщения об ошибке.", Type = typeof(ApiErrorDto))]
         #endregion
-        public async Task<ActionResult<SalaryDto>> GetSalaryByUserAsync()
+        public async Task<ActionResult<SalaryDto>> GetSalaryByUserAsync([SwaggerParameter("Id пользователя у которого хотим получить зарплату", Required = true)] int userId)
         {
             return Ok();
         }

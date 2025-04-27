@@ -31,7 +31,7 @@ public partial class AppDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=MSI;Initial Catalog=WamsDB;User ID=hhallva;Password=123890;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlite("Data Source=app.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -92,7 +92,7 @@ namespace WebApi.Controllers
                     MaxEmployees = shiftDto.MaxEmployees,
                 };
 
-                context.Shifts.Add(shift);
+                await context.Shifts.AddAsync(shift);
                 await context.SaveChangesAsync();
 
                 return CreatedAtAction("GetShiftById", new { id = shift.Id }, shift.ToDto());

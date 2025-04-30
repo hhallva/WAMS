@@ -75,7 +75,7 @@ namespace WebApi.Controllers
                     Comment = assignmentDto.Comment,
                 };
 
-                context.Assignments.Add(assignment);
+                await context.Assignments.AddAsync(assignment);
                 await context.SaveChangesAsync();
 
                 return Created("", assignment.ToDto());
